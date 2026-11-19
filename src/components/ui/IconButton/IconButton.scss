@@ -1,0 +1,50 @@
+@use '../../../styles/colors' as *;
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  padding: 0;
+  transition: color 0.2s ease, background-color 0.2s ease;
+
+  &--ghost {
+    width: 24px;
+    height: 24px;
+  }
+
+  &--filled {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: $white8;
+
+    &:hover {
+      background-color: $white20;
+    }
+  }
+
+  &.edit {
+    color: $white80;
+    &:hover {
+        color: $blue;
+    }
+  }
+
+  &.trash {
+    color: $white60;
+    &:hover {
+        color: $red;
+    }
+  }
+
+  &.check {
+    color: $blue;
+  }
+
+  &.cancel {
+    color: $white70;
+  }
+}

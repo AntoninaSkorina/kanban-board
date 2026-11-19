@@ -1,0 +1,29 @@
+@use '../../styles/variables' as *;
+@use '../../styles/colors' as *;
+
+.board-wrapper {
+  width: 100%;
+  padding-bottom: 16px;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: $white20 transparent;
+
+  &::-webkit-scrollbar {
+    height: 6px; // Тонкий горизонтальный скролл
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $white20;
+    border-radius: 10px;
+  }
+}
+
+.board {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(280px, 1fr));
+  gap: 16px;
+
+  @media (max-width: $responsiveWidth) {
+    gap: 12px;
+    grid-template-columns: repeat(4, minmax(250px, 1fr));
+  }
+}

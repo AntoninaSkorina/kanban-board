@@ -1,0 +1,58 @@
+// src/App.scss
+@use 'styles/colors' as *;
+@use 'styles/variables' as *;
+
+.page {
+  padding: 64px 40px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  @media (max-width: $responsiveWidth) {
+    gap: 16px;
+    padding: 40px 20px;
+  }
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.search-bar {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 430px;
+  max-width: 100%;
+  &__icon {
+    position: absolute;
+    left: 20px;
+    pointer-events: none;
+  }
+  &__input {
+    width: 100%;
+    padding: 9px 20px 8px 64px;
+    background: $white7;
+    border: 1px solid $white30;
+    border-radius: 20px;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+    color: $white60;
+    font-size: 14px;
+    line-height: 21px;
+    &::placeholder {
+      color: $white60;
+    }
+
+    &:hover {
+      border-color: $blue;
+    }
+    &:focus {
+      box-shadow: 0 0 0 4px $blue50;
+      outline: none;
+    }
+  }
+}

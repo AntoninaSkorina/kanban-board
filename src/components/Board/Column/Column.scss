@@ -1,0 +1,82 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/variables' as *;
+
+.column {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: $black70;
+  border-radius: 4px;
+  padding: 32px 16px;
+  gap: 16px;
+  min-height: 200px;
+  @media (max-width: $responsiveWidth) {
+    padding: 16px 12px;
+    gap: 8px;
+  }
+
+  &--over {
+    background: $white10; // Подсветка при наведении задачи
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    @media (max-width: $responsiveWidth) {
+      font-size: 20px;
+    }
+  }
+
+  &__add-btn {
+    background: transparent;
+    border: none;
+    white-space: nowrap;
+    &:hover {
+        color: $blue;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow-y: auto;
+    // Ограничим высоту, чтобы при большом количестве задач появлялся внутренний скролл
+    // max-height: calc(100vh - 200px);
+    /* Отступ справа, чтобы скроллбар не прилипал к карточкам */
+    // padding-right: 4px;
+
+    /* --- Стили для Firefox --- */
+    scrollbar-width: thin; /* Узкий скролл */
+    scrollbar-color: $white20 transparent; /* Цвет ползунка и фона */
+
+    /* --- Стили для Chrome, Safari, Edge (WebKit) --- */
+    &::-webkit-scrollbar {
+      width: 6px; /* Тонкий скролл (было 8-12 по умолчанию) */
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent; /* Прозрачный фон дорожки */
+      margin: 4px 0; /* Небольшие отступы сверху и снизу */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $white20; /* Полупрозрачный белый ползунок */
+      border-radius: 10px; /* Округлые края */
+      border: 2px solid transparent; /* Создает эффект "воздуха" вокруг ползунка */
+      background-clip: padding-box; /* Чтобы фон не залезал под border */
+
+      &:hover {
+        background-color: $white30; /* Чуть ярче при наведении */
+      }
+    }
+  }
+}

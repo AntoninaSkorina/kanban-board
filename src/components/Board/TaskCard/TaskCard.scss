@@ -1,0 +1,101 @@
+@use '../../../styles/colors' as *;
+@use '../../../styles/variables' as *;
+
+.task-card {
+  position: relative;
+  background: $white10;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: all 0.15s ease;
+
+  &:hover {
+    border-color: $blue;
+
+    .task-card__actions {
+      opacity: 1;
+    }
+  }
+
+  &--overdue {
+    border-color: $red;
+    .task-card__value--overdue {
+      color: $red;
+    }
+  }
+
+  // Режим редактирования
+  &--editing {
+    border-color: $blue;
+    background: $white7;
+  }
+
+  &--dragging {
+    z-index: 999;
+    cursor: grabbing;
+  }
+
+  &__actions {
+    position: absolute;
+    top: 18px;
+    right: 16px;
+    display: flex;
+    gap: 16px;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+    gap: 16px;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: -0.4px;
+    @media (max-width: $responsiveWidth) {
+      flex-direction: column;
+      gap: 0;
+    }
+  }
+
+  &__label {
+    color: $white60;
+    min-width: 85px; // Фиксированная ширина для выравнивания колонок
+  }
+
+  &__value {
+    color: $white87;
+    font-weight: 700;
+    line-height: 22px;
+    word-break: break-word;
+    overflow-wrap: anywhere;
+  }
+
+  // --- Стили для инлайн-редактирования ---
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .task-card__row {
+      align-items: flex-start;
+    }
+  }
+
+  &__edit-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 8px;
+  }
+}
